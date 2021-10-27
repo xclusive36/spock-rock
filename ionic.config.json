@@ -1,0 +1,7 @@
+{
+  "name": "spock-rock",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
