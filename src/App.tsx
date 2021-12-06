@@ -1,7 +1,12 @@
 import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import Home from './pages/Home';
+
+import WholeContext from './game_context';
+
+import Start from './pages/start/start.component';
+import Play from './pages/play/play.component';
+import End from './pages/end/end.component';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -22,19 +27,29 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 
-const App: React.FC = () => (
+const App: React.FC = () => {
+  
+  return (
   <IonApp>
     <IonReactRouter>
       <IonRouterOutlet>
-        <Route exact path="/home">
-          <Home />
-        </Route>
-        <Route exact path="/">
-          <Redirect to="/home" />
-        </Route>
+        <WholeContext>
+          <Route exact path="/start">
+              <Start />
+            </Route>
+            <Route path="/play">
+              <Play />
+            </Route>
+            <Route path="/end">
+              <End />
+            </Route>
+            <Route exact path="/">
+              <Redirect to="/start" />
+            </Route>
+        </WholeContext>
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>
-);
+)};
 
 export default App;
